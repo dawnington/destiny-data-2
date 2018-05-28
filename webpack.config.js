@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const Dotenv = require('dotenv-webpack');
 const bundlePath = path.resolve(__dirname, "dist/");
 
 module.exports = {
@@ -27,5 +28,8 @@ module.exports = {
     contentBase: path.join(__dirname,'public'),
     publicPath: "http://localhost:8080/dist"
   },
-  plugins: [ new webpack.HotModuleReplacementPlugin() ]
+  plugins: [
+    new Dotenv(),
+    new webpack.HotModuleReplacementPlugin(),
+  ]
 };

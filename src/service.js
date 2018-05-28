@@ -5,7 +5,7 @@ const url = 'https://www.bungie.net/Platform';
 const ApiService = () => {
   const instance = axios.create({
     headers: {
-      'X-Api-Key': 'c1eff700917547f9b7ace07118dd4e84',
+      'X-Api-Key': process.env.BUNGIE_API_KEY,
     }
   })
 

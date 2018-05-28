@@ -17,17 +17,19 @@ class SearchForm extends React.Component {
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <fieldset disabled={this.props.disabled}>
-          <label htmlFor="username">Username:
-            <input
-              id="username"
-              type="text"
-              name="username"
-              ref={(input) => this.input = input}
-            />
-          </label>
-          <button>Search</button>
-        </fieldset>
+        <div className="form-group">
+          <fieldset disabled={this.props.disabled}>
+            <label htmlFor="username">Username:
+              <input
+                id="username"
+                type="text"
+                name="username"
+                ref={(input) => this.input = input}
+              />
+            </label>
+            <button className="btn btn-primary">Search</button>
+          </fieldset>
+        </div>
       </form>
     )
   }

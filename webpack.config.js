@@ -14,8 +14,13 @@ module.exports = {
         options: { presets: ['env', 'react', 'stage-2'] }
       },
       {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader' ]
+        test: /\.(css|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+          'postcss-loader'
+        ],
       }
     ]
   },

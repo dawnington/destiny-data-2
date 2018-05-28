@@ -9,13 +9,14 @@ class App extends React.Component {
       players: [],
       version: 'd2',
       selectedWeapons: [],
+      platform: 2,
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     const name = this.input.value;
-    ApiService().getBungieId(name, 2)
+    ApiService().getBungieId(name, this.state.platform)
       .then((response) => {
         const players = this.state.players;
         const newPlayer = response.data.Response[0];

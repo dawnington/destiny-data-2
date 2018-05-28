@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from './app';
 
 ReactDOM.render(
-  <h3>asdjnfkdnbfl</h3>,
+  <App />,
   document.getElementById("root")
 );

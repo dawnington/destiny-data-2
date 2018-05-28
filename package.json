@@ -1,12 +1,17 @@
 {
   "name": "destiny-data-2",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "repository": "https://github.com/dawnington/destiny-data-2.git",
   "author": "Dawn Tran <dawnington@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.4.0"
+    "react": "^16.4.0",
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }

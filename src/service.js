@@ -12,7 +12,7 @@ const ApiService = () => {
   return {
     getBungieId: (username, consoleType) => (
       instance.get(`${url}/Destiny2/SearchDestinyPlayer/${consoleType}/${username}/`)
-    ).then(response => response.data.Response[0].membershipId),
+    ),
   }
 };
 

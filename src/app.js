@@ -1,4 +1,5 @@
 import React from 'react';
+import ApiService from './service';
 
 class App extends React.Component {
   constructor () {
@@ -12,8 +13,15 @@ class App extends React.Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     const name = this.input.value;
-    debugger
+    ApiService().getBungieId(name, 2)
+      .then((response) => {
+        const players = this.state.players;
+        const newPlayer = response.data.Response[0];
+        players.push(newPlayer);
+        this.setState({ players });
+      })
   }
 
   render () {
@@ -21,16 +29,26 @@ class App extends React.Component {
       <div>
         <h2>Destiny Data</h2>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username:
-            <input
-              id="username"
-              type="text"
-              name="username"
-              ref={(input) => this.input = input}
-            />
-          </label>
-          <input type="submit" value="Search" />
+          <fieldset disabled={this.state.players.length === 3}>
+            <label htmlFor="username">Username:
+              <input
+                id="username"
+                type="text"
+                name="username"
+                ref={(input) => this.input = input}
+              />
+            </label>
+            <button>Search</button>
+          </fieldset>
         </form>
+        <h3>Players</h3>
+        <ul>
+          {this.state.players.map((player) => {
+            return (
+              <li>{player.displayName}: {player.membershipId}</li>
+            )
+          })}
+        </ul>
       </div>
     )
   }

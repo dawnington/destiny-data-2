@@ -47,7 +47,7 @@ class App extends React.Component {
         <ul>
           {this.state.players.map((player) => {
             return (
-              <li>{player.displayName}: {player.membershipId}</li>
+              <li key={player.membershipId}>{player.displayName}: {player.membershipId}</li>
             )
           })}
         </ul>

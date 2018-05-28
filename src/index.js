@@ -1,6 +1,9 @@
 function component() {
   var element = document.createElement('div');
-  element.innerHTML = ['Hello', 'webpack'].join(' ');
+
+  const joinblah = list => list.join(' ');
+
+  element.innerHTML = joinblah(['Hello', 'webpack', 'user']);
 
   return element;
 }

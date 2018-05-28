@@ -1,11 +1,7 @@
-function component() {
-  var element = document.createElement('div');
+import React from "react";
+import ReactDOM from "react-dom";
 
-  const joinblah = list => list.join(' ');
-
-  element.innerHTML = joinblah(['Hello', 'webpack', 'user']);
-
-  return element;
-}
-
-document.body.appendChild(component());
+ReactDOM.render(
+  <h3>asdjnfkdnbfl</h3>,
+  document.getElementById("root")
+);

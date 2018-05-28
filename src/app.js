@@ -1,6 +1,8 @@
 import React from 'react';
 import ApiService from './service';
 
+import SearchForm from './form';
+
 class App extends React.Component {
   constructor () {
     super();
@@ -9,15 +11,11 @@ class App extends React.Component {
       players: [],
       version: 'd2',
       selectedWeapons: [],
-      platform: 2,
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const name = this.input.value;
-    this.input.value = '';
-    ApiService().getBungieId(name, this.state.platform)
+  addPlayer = (name, platform) => {
+    ApiService().getBungieId(name, platform)
       .then((response) => {
         const players = this.state.players;
         const newPlayer = response.data.Response[0];
@@ -30,19 +28,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Destiny Data</h2>
-        <form onSubmit={this.handleSubmit}>
-          <fieldset disabled={this.state.players.length === 3}>
-            <label htmlFor="username">Username:
-              <input
-                id="username"
-                type="text"
-                name="username"
-                ref={(input) => this.input = input}
-              />
-            </label>
-            <button>Search</button>
-          </fieldset>
-        </form>
+        <SearchForm disabled={this.state.players.length === 3} addPlayer={this.addPlayer} />
         <h3>Players</h3>
         <ul>
           {this.state.players.map((player) => {

@@ -16,6 +16,7 @@ class App extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const name = this.input.value;
+    this.input.value = '';
     ApiService().getBungieId(name, this.state.platform)
       .then((response) => {
         const players = this.state.players;

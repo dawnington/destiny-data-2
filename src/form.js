@@ -29,14 +29,14 @@ class SearchForm extends React.Component {
           <fieldset disabled={this.props.disabled}>
             <div className="btn-group btn-group-sm platform-toggle" role="group" aria-label="platform">
               <button
-                className={classNames('btn btn-sm', { 'btn-primary': isPS4, 'btn-outline-primary': !isPS4 })}
+                className={classNames('btn btn-sm', { 'btn-warning': isPS4, 'btn-outline-warning': !isPS4 })}
                 onClick={this.handlePlatformChange(2)}
                 type="button"
               >
                 PS4
               </button>
               <button
-                className={classNames('btn btn-sm', { 'btn-primary': !isPS4, 'btn-outline-primary': isPS4 })}
+                className={classNames('btn btn-sm', { 'btn-warning': !isPS4, 'btn-outline-warning': isPS4 })}
                 onClick={this.handlePlatformChange(1)}
                 type="button"
               >
@@ -53,7 +53,7 @@ class SearchForm extends React.Component {
                 ref={(input) => this.input = input}
               />
             </label>
-            <input className="btn btn-primary btn-sm" type="submit" value="Search" />
+            <input className="btn btn-warning btn-sm" type="submit" value="Search" />
           </fieldset>
         </div>
       </form>

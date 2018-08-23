@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames'
 
 class SearchForm extends React.Component {
   constructor (props) {
@@ -20,25 +21,30 @@ class SearchForm extends React.Component {
   }
 
   render () {
+    const isPS4 = this.state.platform === 2;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <fieldset disabled={this.props.disabled}>
             <div className="btn-group btn-group-sm" role="group" aria-label="platform">
               <button
-                className={`btn btn${this.state.platform === 1 ? '-outline' : ''}-primary btn-sm`}
+                className={classNames('btn btn-sm', { 'btn-primary': isPS4, 'btn-outline-primary': !isPS4 })}
                 onClick={this.handlePlatformChange(2)}
+                type="button"
               >
                 PS4
               </button>
               <button
-                className={`btn btn${this.state.platform === 2 ? '-outline' : ''}-primary btn-sm`}
+                className={classNames('btn btn-sm', { 'btn-primary': !isPS4, 'btn-outline-primary': isPS4 })}
                 onClick={this.handlePlatformChange(1)}
+                type="button"
               >
                 XBOX
               </button>
             </div>
-            <label htmlFor="username">Username:
+            <label htmlFor="username">
+              Username:
               <input
                 id="username"
                 type="text"
@@ -46,7 +52,7 @@ class SearchForm extends React.Component {
                 ref={(input) => this.input = input}
               />
             </label>
-            <button className="btn btn-primary btn-sm">Search</button>
+            <input className="btn btn-primary btn-sm" type="submit" value="Search" />
           </fieldset>
         </div>
       </form>

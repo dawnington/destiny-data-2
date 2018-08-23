@@ -1,5 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 
-h2 {
-  color: "red";
+.page-container {
+  padding: 20px;
 }
+
+.platform-toggle {
+  margin-right: 10px;
+}
+
+.username-input {
+  margin: 0 10px;
+}
+

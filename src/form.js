@@ -27,7 +27,7 @@ class SearchForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <fieldset disabled={this.props.disabled}>
-            <div className="btn-group btn-group-sm" role="group" aria-label="platform">
+            <div className="btn-group btn-group-sm platform-toggle" role="group" aria-label="platform">
               <button
                 className={classNames('btn btn-sm', { 'btn-primary': isPS4, 'btn-outline-primary': !isPS4 })}
                 onClick={this.handlePlatformChange(2)}
@@ -47,6 +47,7 @@ class SearchForm extends React.Component {
               Username:
               <input
                 id="username"
+                className="username-input"
                 type="text"
                 name="username"
                 ref={(input) => this.input = input}

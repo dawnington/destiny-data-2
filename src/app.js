@@ -26,7 +26,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="page-container">
         <h2>Destiny Data</h2>
         <SearchForm disabled={this.state.players.length === 3} addPlayer={this.addPlayer} />
         <h3>Players</h3>

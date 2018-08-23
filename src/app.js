@@ -2,13 +2,14 @@ import React from 'react';
 import ApiService from './service';
 
 import SearchForm from './form';
+import PlayerList from './playerList.js';
 
 class App extends React.Component {
   constructor () {
     super();
 
     this.state = {
-      players: [],
+      players: {},
       version: 'd2',
       selectedWeapons: [],
     }
@@ -21,11 +22,26 @@ class App extends React.Component {
         let newPlayer = response.data.Response[0];
         ApiService().getPvPStats(newPlayer)
           .then((response) => {
-            newPlayer = { ...newPlayer, stats: response.data.Response.mergedAllCharacters.results.allPvP.allTime };
-            players.push(newPlayer);
-            this.setState({ players });
+            newPlayer = {
+              ...newPlayer,
+              stats: response.data.Response.mergedAllCharacters.results.allPvP.allTime,
+              consoleType: newPlayer.membershipType === 2 ? 'playstation' : 'xbox',
+            };
+            
+            this.setState({
+              players: {
+                ...players,
+                [newPlayer.displayName]: newPlayer,
+              },
+            });
           })
       })
+  }
+
+  removePlayer = (name) => () => {
+    const players = this.state.players;
+    delete(players[name]);
+    this.setState({ players });
   }
 
   render () {
@@ -33,14 +49,7 @@ class App extends React.Component {
       <div className="page-container">
         <h2>Destiny Data</h2>
         <SearchForm disabled={this.state.players.length === 3} addPlayer={this.addPlayer} />
-        <h3>Players</h3>
-        <ul>
-          {this.state.players.map((player) => {
-            return (
-              <li key={player.membershipId}>{player.displayName}: {player.membershipId}</li>
-            )
-          })}
-        </ul>
+        <PlayerList players={Object.values(this.state.players)} removePlayer={this.removePlayer} />
       </div>
     )
   }

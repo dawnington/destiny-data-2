@@ -13,6 +13,9 @@ const ApiService = () => {
     getBungieId: (username, consoleType) => (
       instance.get(`${url}/Destiny2/SearchDestinyPlayer/${consoleType}/${username}/`)
     ),
+    getPvPStats: (player) => (
+      instance.get(`${url}/Destiny2/${player.membershipType}/Account/${player.membershipId}/Stats/`)
+    ),
   }
 };
 

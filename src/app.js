@@ -18,9 +18,13 @@ class App extends React.Component {
     ApiService().getBungieId(name, platform)
       .then((response) => {
         const players = this.state.players;
-        const newPlayer = response.data.Response[0];
-        players.push(newPlayer);
-        this.setState({ players });
+        let newPlayer = response.data.Response[0];
+        ApiService().getPvPStats(newPlayer)
+          .then((response) => {
+            newPlayer = { ...newPlayer, stats: response.data.Response.mergedAllCharacters.results.allPvP.allTime };
+            players.push(newPlayer);
+            this.setState({ players });
+          })
       })
   }
 
